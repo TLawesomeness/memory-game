@@ -6,7 +6,7 @@ $(document).ready(init);
 function init() {
   createBoxes();
   paintBoxes();
-  $('boxSet1').on('click', clickBox);
+  $('boxSet').on('click', clickBox);
 }
 
 var boxSet = [];
@@ -14,8 +14,11 @@ var boxSet = [];
 function clickBox() {
   $(this).addClass('clicked');
 
-  var image = $(this).find('art').text();
-  var boxImage = _.find(boxSet, function(b) {return b.art === image;});
+  $('.frontimg').click(function() {
+    $(this).slideUp();
+  });
+  // var image = $(this).find('art').text();
+  // var boxImage = _.find(boxSet, function(b) {return b.art === image;});
 
 }
 
@@ -37,8 +40,12 @@ function createBoxes() {
 
 function paintBoxes() {
   boxSet.forEach(function(art) {
+    var $backimg = $('<div>');
+    $backimg.addClass('backimg');
+
     var $outer = $('<div>');
-    $outer.addClass('art');
+    $outer.addClass('frontimg');
+
 
 
     var $img = $('<div>');

@@ -4,12 +4,27 @@ body {
   background-repeat:no-repeat;
 }
 
+.title {
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.box {
+  margin-top: 15px;
+  display: block;
+  height: 670px;
+  width: 520px;
+  border: 3px solid red;
+}
+
 #boxSet {
-  .art {
+  .frontimg {
     background: linear-gradient(to left top, orange 50%, red 80%);
     display: inline-block;
-    margin-right: 25px;
-    margin-top: 25px;
+
+    margin: 5px 5px 5px 5px;
 
     &> div:first-child {
       height: 100px;
@@ -20,6 +35,10 @@ body {
     }
   }
 }
+
+// .frontimg:hover {
+//   border: 5px solid yellow;
+// }
 
 .clicked {
   -webkit-filter: grayscale(100%);
