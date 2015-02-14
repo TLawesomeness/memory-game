@@ -3,20 +3,14 @@ html(lang='en')
   head
     meta(charset='utf-8')
     title Memory Game
-    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
-    link(rel='stylesheet' href='/style.css')
+    link(rel='stylesheet', href='/style.css')
   body
-    container.header
-      .row.text-center
-        col-xs-6
-          h3 Test your memory!
-          button#timer.btn.btn-default Start
-          h3#secs 
-           
-    container#box
-      #setCards.row
+    button.start Start  
+    container.box
+      #boxSet
     
           
     script(src='/vendor/jquery/dist/jquery.js')
     script(src='/main.js')
+    script(src='/Boxsets/set1.js')
     script(src='/vendor/lodash/lodash.js')  
