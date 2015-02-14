@@ -1,0 +1,27 @@
+body {
+  background-image:url('http://www.mrwallpaper.com/wallpapers/league-of-legends-champions-art-1920x1080.jpg');
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+#boxSet {
+  .art {
+    background: linear-gradient(to left top, orange 50%, red 80%);
+    display: inline-block;
+    margin-right: 25px;
+    margin-top: 25px;
+
+    &> div:first-child {
+      height: 100px;
+      width: 100px;
+      background-size: cover;
+    //   border: 2px solid red;
+      margin: 10px;
+    }
+  }
+}
+
+.clicked {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
