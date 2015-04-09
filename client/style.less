@@ -3,8 +3,13 @@ body {
   background-size:cover;
 }
 
+#head {
+  text-align: center;
+}
+
 .start {
-  margin: auto;
+  // margin: auto;
+  display: inline-block;
   font-size: 20px;
   color: red;
   border: 1px solid red;
@@ -13,16 +18,21 @@ body {
 }
 
 #timer {
-  color: white;
+  color: red;
+  font-weight: bold;
   font-family: monospace;
   padding: 5px auto;
   font-size: 50px;
   text-align: center;
+  margin-top: 15px;
 }
 
 #boxSet {
-  width: 530px;
-  height: 630px;
+  // width: 530px;
+  // height: 630px;
+  // margin: 0;
+  // display: inline-block;
+
   // background: white;
 }
 //
@@ -49,8 +59,10 @@ body {
     // margin: 15px 0px -5px 15px;
 }
 
-flip-container {
+.flip-container {
   perspective: 1000;
+  display: inline-block;
+  position: relative;
 }
   /* flip the pane when hovered */
 // .flip-container:hover .flipper, .flip-container.flip .flipper {
@@ -70,7 +82,6 @@ flip-container {
   display: inline-block;
   margin: 10px 15px 0px 15px;
 
-
 }
 
 /* flip speed goes here */
@@ -86,8 +97,8 @@ flip-container {
   backface-visibility: hidden;
 
   position: absolute;
-  // top: 0;
-  // left: 0;
+  top: 0;
+  left: 0;
 
 }
 

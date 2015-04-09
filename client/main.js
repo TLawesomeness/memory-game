@@ -1,32 +1,60 @@
-/* global _, Box */
+/* global _*/
 'use strict';
 
 $(document).ready(init);
 
-var flipImg = [];
 var backImg = [];
+var timer;
+var timeCount;
 
 function init() {
-  createBackImg();
+  createBack();
   paintImages();
-  // $('#boxSet').click();
-
-  $('.flip-container').click(function() {
-    $(this).find('.flipper').addClass('flip');
-    var $flip = $('.flip');
-
-    if ($flip.length === 2) {
-      setTimeout(flips, 500);
-    }
-  });
+  $('.flip-container').click(showCard);
+  $('.start').click(go);
 }
 
-function flips() {
-  var firstImg = $('.flip > .back')[0].id;
-  var secondImg = $('.flip > .back')[1].id;
-  if (firstImg === secondImg) {
-    $('.flip').fadeOut('flip');
+function go() {
+  timeCount = 60;
+  $('#timer').html(timeCount);
+  $('.start').prop('disabled', true);
+  console.log('clicked');
 
+  timer = setInterval(function() {
+    --timeCount;
+    $('#timer').html(timeCount);
+    if (timeCount === 0) {
+      if ($('.back').length === 0) {
+        alert('You Won!');
+        clearInterval(timer);
+        $('.start').prop('disabled', false);
+      } else {
+        alert('Too Slow! Try Again.');
+        clearInterval(timer);
+        $('.start').prop('disabled', false);
+      }
+    }
+  }, 1000);
+}
+
+function showCard() {
+  $(this).find('.flipper').addClass('flip');
+  var $flip = $('.flip');
+
+  if ($flip.length === 2) {
+    setTimeout(checkMatch, 500);
+  }
+}
+
+var storedCards = [];
+
+function checkMatch() {
+  var img1 = $('.flip > .back')[0].id;
+  var img2 = $('.flip > .back')[1].id;
+  if (img1 === img2) {
+    $('.flip').fadeOut();
+    storedCards.push('.flip');
+    console.log(storedCards);
     console.log('It\'s a match!');
 
   } else {
@@ -35,7 +63,29 @@ function flips() {
   }
 }
 
-function createBackImg() {
+// function revealedCards() {
+//   $('.matched').remove();
+//   if ($('.flip').length === 20) {
+//     alert('you win!');
+//   }
+// }
+//
+// function ifMatch() {
+//   if (checkMatch()) {
+//     $('.flip').removeClass('flip').addClass('matched');
+//     $('.matched').bind('flip', revealedCards);
+//   } else {
+//     $('.flip').removeClass('flip');
+//   }
+// }
+
+function Box(id, name, image) {
+  this.id = id;
+  this.name = name;
+  this.image = image;
+}
+
+function createBack() {
   var b1 = new Box(0, 'Yi', 'http://iconbug.com/data/9c/512/6639d7e389cf294ae7df5fdaf93c62ff.png');
   var b2 = new Box(1, 'Udyr', 'http://icons.iconarchive.com/icons/fazie69/league-of-legends/512/Udyr-Spirit-Guard-icon.png');
   var b3 = new Box(2, 'Caitlyn', 'http://icons.iconarchive.com/icons/fazie69/league-of-legends/512/Caitlyn-icon.png');
@@ -64,15 +114,15 @@ function paintImages() {
     $back.addClass('back');
     $back.css('background-image', 'url("' + icon.image + '")');
 
-    var $outer = $('<div>');
-    $outer.addClass('backcolor');
-
     var $front = $('<div>');
     $front.addClass('front');
+
+    var $outer = $('<div>');
+    $outer.addClass('backcolor');
 
     $flipper.append($front, $back);
     $flipContainer.append($outer);
     $outer.append($flipper);
-    $('#boxSet').append($flipContainer);
+    $('#gameBox').append($flipContainer);
   });
 }

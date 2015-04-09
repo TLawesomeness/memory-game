@@ -6,14 +6,14 @@ html(lang='en')
     link(rel='stylesheet', href='/style.css')
   body
     .container
-      .row
+      .row#head
         button.start Start
-        #timer
-    
-    #boxSet
+        #timer(data-time='60')
+
+      #gameBox
     
           
     script(src='/vendor/jquery/dist/jquery.js')
     script(src='/main.js')
-    script(src='/Boxsets/set1.js')
+    //- script(src='/Boxsets/set1.js')
     script(src='/vendor/lodash/lodash.js')  
